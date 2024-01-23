@@ -3,10 +3,10 @@ package gsc.backend.apiPayLoad;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import gsc.backend.apiPayLoad.code.BaseCode;
+import gsc.backend.apiPayLoad.code.status.SuccessStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import umc.IRECIPE_Server.apiPayLoad.code.BaseCode;
-import umc.IRECIPE_Server.apiPayLoad.code.status.SuccessStatus;
 
 @Getter
 @AllArgsConstructor
