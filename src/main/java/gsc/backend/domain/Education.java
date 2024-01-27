@@ -25,7 +25,7 @@ public class Education extends BaseEntity {
     // 교육 유형 이름
     private String name;
 
-    // 관련
+    // 관련 설명
     @Column(columnDefinition = "TEXT")
     private String description;
 
