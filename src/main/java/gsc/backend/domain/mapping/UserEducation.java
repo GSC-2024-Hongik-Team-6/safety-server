@@ -25,9 +25,15 @@ public class UserEducation extends BaseEntity {
     @JoinColumn(name = "education_id")
     private Education education;
 
-    // 해당 유형의 스테이지 전체 개수
-    private int stageNum;
+    // 사용자가 해결한 해당 교육 유형의 문제 수
+    private int userSolvedQuizCount = 0;
 
-    // 사용자가 해결한 스테이지 수
-    private int userSolvedStageNum;
+    public static UserEducation createUserEduaction(User user, Education education) {
+        UserEducation userEducation = UserEducation.builder()
+                .user(user)
+                .education(education)
+                .userSolvedQuizCount(0)
+                .build();
+        return userEducation;
+    }
 }
