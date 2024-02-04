@@ -28,9 +28,22 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserEducation> userEducationList = new ArrayList<>();
 
+    // Firebase Uuid
+    @Column(nullable = false)
+    private String uuid;
+
     // 사용자 레벨
-    private int level;
+    private int level = 0;
 
     // 레벨을 위한 경험치
-    private int exp;
+    private int exp = 0;
+
+    public static User createUser(String userUuid) {
+        User newUser = User.builder()
+                .uuid(userUuid)
+                .level(0)
+                .exp(0)
+                .build();
+        return newUser;
+    }
 }
