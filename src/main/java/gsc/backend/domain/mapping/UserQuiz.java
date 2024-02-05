@@ -19,19 +19,30 @@ public class UserQuiz extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private static User user;
 
     @ManyToOne
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
     // 문제의 출제 여부
-    private boolean isSolved;
+    private static boolean isSolved = false;
 
     // 사용자의 정답 여부
-    private boolean isCorrect;
+    private static boolean isCorrect = false;
 
     // 사용자가 선택한 정답
-    private String userAnswer;
+    private static String userAnswer = null; //초기화
+
+    public static UserQuiz createUserQuiz(User user, Quiz quiz) {
+        UserQuiz userQuiz = UserQuiz.builder()
+                .user(user) //user에 맞춰서 코딩했으나..
+                .quiz(quiz)
+                .isSolved(isSolved)
+                .isCorrect(isCorrect)
+                .userAnswer(userAnswer)
+                .build();
+        return userQuiz;
+    }
 
 }

@@ -41,4 +41,5 @@ public class Quiz extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private EducationType educationType;
 
+
 }
