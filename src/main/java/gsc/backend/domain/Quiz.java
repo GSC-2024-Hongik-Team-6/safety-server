@@ -20,9 +20,9 @@ public class Quiz extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "quiz_id")
     private Long id;
-
+//user Quiz 따로, user를 통해서 quiz_id를 받아와, 5개씩 pagenation으로 가져오자는 느낌은 어떨까
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
-    private List<UserQuiz> userQuizList = new ArrayList<>();
+    private List<UserQuiz> userQuizList = new ArrayList<>(); //왜 1:n인가
 
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
     private List<Choice> choiceList = new ArrayList<>();

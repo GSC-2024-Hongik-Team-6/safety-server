@@ -26,7 +26,7 @@ public class UserQuiz extends BaseEntity {
     private Quiz quiz;
 
     // 문제의 출제 여부
-    private static boolean isSolved = false;
+    public static boolean isSolved = false;
 
     // 사용자의 정답 여부
     private static boolean isCorrect = false;

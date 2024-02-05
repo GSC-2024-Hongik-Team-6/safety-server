@@ -29,9 +29,7 @@ public class QuizEnteringController {
     public ResponseEntity<List<QuizEnteringDTO>> getQuizEntering(Principal principal) {
 
         // 사용자 uuid 조회
-        String userUuid = principal.getName();
-
-        QuizEnteringDTO questionDto = QuizEnteringService.getQuizEnteringData(userUuid);
+        
 
         // DataNumDTO 세팅
         DataNumDTO dataNumDTO = DataNumDTO.builder()
