@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuestionNumDTO {
-    private int stageQuestionNum;
-    private int userSolvedNum;
+    private Long id;
+    private boolean isSolved;
 }

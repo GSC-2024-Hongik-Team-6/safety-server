@@ -9,8 +9,7 @@ import org.springframework.http.ResponseEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.security.Principal;
 import java.util.Collections;
@@ -24,22 +23,25 @@ public class QuizEnteringController {
     //Post는 데이터 등록이 목표
 
     private final QuizEnteringService quizEnteringService;
-    @GetMapping("/quiz")
+    @GetMapping("/quiz/{educationId}")
 
-    public ResponseEntity<List<QuizEnteringDTO>> getQuizEntering(Principal principal) {
+    public ResponseEntity<List<QuizEnteringDTO>> getQuizEntering(@PathVariable("educationId") Long educationId,Principal principal) {
 
         // 사용자 uuid 조회
-        
+        String userUuid = principal.getName();
 
-        // DataNumDTO 세팅
+        //quiz 조회
+        List<QuestionNumDTO> quizDto = (List<QuestionNumDTO>) quizEnteringService.getQuizEnteringData(userUuid,educationId);
+
+        // meta 세팅
         DataNumDTO dataNumDTO = DataNumDTO.builder()
-                .isSolved(questionDto.contains())
+                .count(quizDto.size())
                 .build( );
 
         // QuizEnteringDTO 세팅
         QuizEnteringDTO quizEnteringDTO = QuizEnteringDTO.builder()
-                .dataNum(dataNumDTO)
-                .questionNum(questionDto.getQuestionNum())
+                .meta(dataNumDTO)
+                .data(quizDto)
                 .build();
 
         return ResponseEntity.ok(Collections.singletonList(quizEnteringDTO));
