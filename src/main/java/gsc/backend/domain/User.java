@@ -28,6 +28,7 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserEducation> userEducationList = new ArrayList<>();
 
+    // Firebase Uuid
     @Column(nullable = false)
     private String uuid;
 

@@ -1,16 +1,14 @@
-package gsc.backend.repository;
-
-import gsc.backend.domain.Page;
 import gsc.backend.domain.Quiz;
+import gsc.backend.domain.enums.EducationType;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-@Repository
 public interface QuizRepository extends JpaRepository<Quiz, Long> {
-    //Quiz findByQuiz(String Quiz);
-    Page findQuizPage(Pageable pageable); //5개씩 가져올 수 있다
-    //Pageable;// 파라미터 값을 소문자로
-    //PageRequest
-    //PageRequest of(int pageNumber, int pageSize)
+
+    // 해당 EducationType 의 Quiz 객체 조회
+    @Query(value = "SELECT q FROM Quiz q WHERE q.educationType = :educationName AND q.quizType = 'MULTIPLE_CHOICE' ORDER BY RAND() limit 1")
+    Quiz findByEducationTypeANDEducationName(@Param("educationName") EducationType educationName);
+
 }

@@ -20,5 +20,5 @@ public class QuizAnswer extends BaseEntity {
     private Quiz quiz;
 
     // 퀴즈 정답
-    private String answer;
+    private int answer;
 }

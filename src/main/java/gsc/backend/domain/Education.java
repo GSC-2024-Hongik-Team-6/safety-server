@@ -32,4 +32,7 @@ public class Education extends BaseEntity {
     // 대표 사진
     @Column(columnDefinition = "TEXT")
     private String image;
+
+    // 해당 교육 유형의 전체 문제 개수
+    private int totalQuizCount;
 }
