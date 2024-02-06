@@ -1,12 +1,11 @@
 package gsc.backend.controller;
 
-import gsc.backend.dto.response.HomeEducationDataResponseDTO;
+import gsc.backend.dto.response.HomeEducationDataDTO;
 import gsc.backend.dto.response.HomeResponseDTO;
-import gsc.backend.dto.response.MetaDTO;
+import gsc.backend.dto.response.HomeMetaDTO;
 import gsc.backend.service.HomeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,16 +42,16 @@ public class HomeController {
         String userUuid = principal.getName();
 
         // Education 데이터 조회
-        List<HomeEducationDataResponseDTO> educationDto = homeService.getHomeData(userUuid);
+        List<HomeEducationDataDTO> educationDto = homeService.getHomeData(userUuid);
 
         // Meta 세팅
-        MetaDTO metaDTO = MetaDTO.builder()
+        HomeMetaDTO homeMetaDTO = HomeMetaDTO.builder()
                 .count(educationDto.size())
                 .build();
 
         // 반환값 세팅
         HomeResponseDTO homeResponseDTO = HomeResponseDTO.builder()
-                .meta(metaDTO)
+                .meta(homeMetaDTO)
                 .data(educationDto)
                 .build();
 

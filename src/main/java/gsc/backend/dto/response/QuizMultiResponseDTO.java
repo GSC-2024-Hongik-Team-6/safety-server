@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MetaDTO {
-    private int count;
+public class QuizMultiResponseDTO {
+    private QuizMetaDTO meta;
+    private QuizMultiDataDTO item;
 }

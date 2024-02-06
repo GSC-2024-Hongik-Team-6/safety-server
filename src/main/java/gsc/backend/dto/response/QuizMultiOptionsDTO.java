@@ -5,13 +5,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class HomeResponseDTO {
-    private HomeMetaDTO meta;
-    private List<HomeEducationDataDTO> data;
+public class QuizMultiOptionsDTO {
+    private int id;
+    private String description;
+    private String imageUrl;
 }

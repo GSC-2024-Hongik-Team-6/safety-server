@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class HomeEducationDataResponseDTO {
+public class HomeEducationDataDTO {
     private Long educationId;
     private String educationName;
     private String educationDescription;
