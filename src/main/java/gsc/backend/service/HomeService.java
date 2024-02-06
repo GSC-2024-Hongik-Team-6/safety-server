@@ -3,13 +3,11 @@ package gsc.backend.service;
 import gsc.backend.domain.Education;
 import gsc.backend.domain.User;
 import gsc.backend.domain.mapping.UserEducation;
-import gsc.backend.dto.response.HomeEducationDataResponseDTO;
-import gsc.backend.dto.response.HomeResponseDTO;
+import gsc.backend.dto.response.HomeEducationDataDTO;
 import gsc.backend.repository.EducationRepository;
 import gsc.backend.repository.UserEducationRepository;
 import gsc.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +23,7 @@ public class HomeService {
     private final EducationRepository educationRepository;
     private final UserEducationRepository userEducationRepository;
 
-    public List<HomeEducationDataResponseDTO> getHomeData(String userUuid) {
+    public List<HomeEducationDataDTO> getHomeData(String userUuid) {
 
         // 사용자 조회
         User user = userRepository.findByUuid(userUuid);
@@ -51,7 +49,7 @@ public class HomeService {
 
                     UserEducation userEducation = userEducationRepository.findByUserAndEducation(nowUser, m);
 
-                    return HomeEducationDataResponseDTO.builder()
+                    return HomeEducationDataDTO.builder()
                             .educationId(m.getId())
                             .educationName(m.getName())
                             .educationDescription(m.getDescription())

@@ -25,4 +25,8 @@ public class Choice extends BaseEntity {
     // 관련 설명
     @Column(columnDefinition = "TEXT")
     private String description;
+
+    // 이미지 경로
+    @Column(columnDefinition = "TEXT")
+    private String imageUrl;
 }

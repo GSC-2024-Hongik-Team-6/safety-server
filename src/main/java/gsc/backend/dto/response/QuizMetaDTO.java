@@ -1,17 +1,15 @@
 package gsc.backend.dto.response;
 
+import gsc.backend.domain.enums.QuizType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class HomeResponseDTO {
-    private HomeMetaDTO meta;
-    private List<HomeEducationDataDTO> data;
+public class QuizMetaDTO {
+    private QuizType type;
 }
