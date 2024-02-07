@@ -13,6 +13,7 @@ public class HomeEducationDataDTO {
     private Long educationId;
     private String educationName;
     private String educationDescription;
+    private String educationDetail;
     private int solvedQuizCount;
     private int totalQuizCount;
 }

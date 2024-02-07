@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuizMultiResponseDTO {
-    private QuizMetaDTO meta;
-    private QuizMultiDataDTO item;
+public class QuizOptionsDTO {
+    private int id;
+    private String description;
+    private String imageUrl;
 }
