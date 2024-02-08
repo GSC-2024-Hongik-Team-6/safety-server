@@ -35,7 +35,7 @@ public class HomeController {
 
     private final HomeService homeService;
 
-    @GetMapping("/home")
+    @GetMapping("/education")
     public ResponseEntity<List<HomeResponseDTO>> getHome(Principal principal) {
 
         // 사용자 uuid 조회

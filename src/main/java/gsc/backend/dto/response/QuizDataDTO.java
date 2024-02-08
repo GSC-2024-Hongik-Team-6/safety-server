@@ -11,9 +11,9 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuizMultiDataDTO {
+public class QuizDataDTO {
     private Long id;
     private String description;
     private int answer;
-    private List<QuizMultiOptionsDTO> options;
+    private List<QuizOptionsDTO> options;
 }

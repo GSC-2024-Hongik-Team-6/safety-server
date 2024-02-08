@@ -53,6 +53,7 @@ public class HomeService {
                             .educationId(m.getId())
                             .educationName(m.getName())
                             .educationDescription(m.getDescription())
+                            .educationDetail(m.getDetail())
                             .solvedQuizCount(userEducation.getUserSolvedQuizCount())
                             .totalQuizCount(m.getTotalQuizCount())
                             .build();
