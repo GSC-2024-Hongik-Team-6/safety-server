@@ -6,6 +6,7 @@ import gsc.backend.domain.QuizAnswer;
 import gsc.backend.domain.enums.QuizType;
 import gsc.backend.dto.response.QuizDataDTO;
 import gsc.backend.dto.response.QuizOptionsDTO;
+import gsc.backend.dto.response.QuizResponseDTO;
 import gsc.backend.repository.ChoiceRepository;
 import gsc.backend.repository.EducationRepository;
 import gsc.backend.repository.QuizAnswerRepository;
@@ -26,7 +27,7 @@ public class QuizService {
     private final QuizAnswerRepository quizAnswerRepository;
     private final ChoiceRepository choiceRepository;
 
-    public QuizDataDTO getQuiz(Long quizId) {
+    public QuizResponseDTO getQuiz(Long quizId) {
 
         // 퀴즈
         Quiz quiz = quizRepository.findById(quizId).orElseThrow(RuntimeException::new);
@@ -51,14 +52,13 @@ public class QuizService {
                 .options(optionsDTO)
                 .build();
 
-        return quizDataDTO;
-    }
+        // 반환값 세팅
+        QuizResponseDTO quizResponseDTO = QuizResponseDTO.builder()
+                .id(quizId)
+                .type(quiz.getQuizType())
+                .item(quizDataDTO)
+                .build();
 
-    public QuizType getQuizType(Long quizId) {
-
-        // 퀴즈
-        Quiz quiz = quizRepository.findById(quizId).orElseThrow(RuntimeException::new);
-
-        return quiz.getQuizType();
+        return quizResponseDTO;
     }
 }
