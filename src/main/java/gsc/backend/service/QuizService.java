@@ -3,13 +3,13 @@ package gsc.backend.service;
 import gsc.backend.domain.Choice;
 import gsc.backend.domain.Quiz;
 import gsc.backend.domain.QuizAnswer;
+import gsc.backend.domain.User;
 import gsc.backend.domain.enums.QuizType;
+import gsc.backend.domain.mapping.UserQuiz;
+import gsc.backend.dto.request.QuizAnswerRequestDTO;
 import gsc.backend.dto.response.QuizDataDTO;
 import gsc.backend.dto.response.QuizOptionsDTO;
-import gsc.backend.repository.ChoiceRepository;
-import gsc.backend.repository.EducationRepository;
-import gsc.backend.repository.QuizAnswerRepository;
-import gsc.backend.repository.QuizRepository;
+import gsc.backend.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,9 +21,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QuizService {
 
+    private final UserRepository userRepository;
     private final EducationRepository educationRepository;
     private final QuizRepository quizRepository;
     private final QuizAnswerRepository quizAnswerRepository;
+    private final UserQuizRepository userQuizRepository;
     private final ChoiceRepository choiceRepository;
 
     public QuizDataDTO getQuiz(Long quizId) {
@@ -60,5 +62,29 @@ public class QuizService {
         Quiz quiz = quizRepository.findById(quizId).orElseThrow(RuntimeException::new);
 
         return quiz.getQuizType();
+    }
+
+    public void addQuizAnswerResult(String userUuid, Long quizId, QuizAnswerRequestDTO request) {
+
+        // 사용자
+        User user = userRepository.findByUuid(userUuid);
+
+        // 퀴즈
+        Quiz quiz = quizRepository.findById(quizId).orElseThrow(RuntimeException::new);
+
+        // 사용자 - 퀴즈 정보
+        UserQuiz userQuiz = userQuizRepository.findByUserAndQuiz(user, quiz);
+
+        // 퀴즈 정답
+        QuizAnswer quizAnswer = quizAnswerRepository.findByQuiz_Id(quizId);
+
+        // 퀴즈 정답 판별
+        if (request.getUserAnswer() == (long) quizAnswer.getAnswer()) {
+            userQuiz.updateIsSolved();
+            userQuiz.updateIsCorrect(true);
+        } else {
+            userQuiz.updateIsSolved();
+            userQuiz.updateIsCorrect(false);
+        }
     }
 }

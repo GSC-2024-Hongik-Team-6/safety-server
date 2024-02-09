@@ -1,12 +1,12 @@
 package gsc.backend.service;
 
 import gsc.backend.domain.Education;
+import gsc.backend.domain.Quiz;
 import gsc.backend.domain.User;
 import gsc.backend.domain.mapping.UserEducation;
+import gsc.backend.domain.mapping.UserQuiz;
 import gsc.backend.dto.response.HomeEducationDataDTO;
-import gsc.backend.repository.EducationRepository;
-import gsc.backend.repository.UserEducationRepository;
-import gsc.backend.repository.UserRepository;
+import gsc.backend.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +22,8 @@ public class HomeService {
     private final UserRepository userRepository;
     private final EducationRepository educationRepository;
     private final UserEducationRepository userEducationRepository;
+    private final QuizRepository quizRepository;
+    private final UserQuizRepository userQuizRepository;
 
     public List<HomeEducationDataDTO> getHomeData(String userUuid) {
 
@@ -36,6 +38,13 @@ public class HomeService {
             for (Education education : allEducations) {
                 UserEducation userEducation = UserEducation.createUserEduaction(newUser, education);
                 userEducationRepository.save(userEducation);
+            }
+
+            // UserQuiz 세팅
+            List<Quiz> allQuizzes = quizRepository.findAll();
+            for (Quiz quiz : allQuizzes) {
+                UserQuiz userQuiz = UserQuiz.createUserQuiz(newUser, quiz);
+                userQuizRepository.save(userQuiz);
             }
         }
 

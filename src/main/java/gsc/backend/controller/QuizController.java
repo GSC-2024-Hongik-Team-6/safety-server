@@ -1,15 +1,17 @@
 package gsc.backend.controller;
 
 import gsc.backend.domain.enums.QuizType;
+import gsc.backend.dto.request.QuizAnswerRequestDTO;
 import gsc.backend.dto.response.QuizMetaDTO;
 import gsc.backend.dto.response.QuizDataDTO;
 import gsc.backend.dto.response.QuizResponseDTO;
 import gsc.backend.service.QuizService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,4 +39,16 @@ public class QuizController {
         return ResponseEntity.ok(quizResponseDTO);
     }
 
+    // Quiz Answer
+    @PostMapping("/quiz/{quizId}")
+    public ResponseEntity<String> addQuizAnswerResult(Principal principal,
+                                                      @PathVariable("quizId") Long quizId,
+                                                      @RequestBody @Valid QuizAnswerRequestDTO request) {
+
+        // 사용자
+        String userUuid = principal.getName();
+
+        quizService.addQuizAnswerResult(userUuid, quizId, request);
+        return ResponseEntity.ok("Success");
+    }
 }
