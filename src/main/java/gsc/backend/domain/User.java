@@ -2,7 +2,6 @@ package gsc.backend.domain;
 
 import gsc.backend.domain.common.BaseEntity;
 import gsc.backend.domain.mapping.UserEducation;
-import gsc.backend.domain.mapping.UserQuiz;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,9 +20,6 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Badge> badgeList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<UserQuiz> userQuizList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserEducation> userEducationList = new ArrayList<>();

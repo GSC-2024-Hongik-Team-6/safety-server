@@ -26,23 +26,13 @@ public class UserQuiz extends BaseEntity {
     private Quiz quiz;
 
     // 문제의 출제 여부
-    public boolean isSolved = false;
+    private boolean isSolved;
 
     // 사용자의 정답 여부
-    private boolean isCorrect = false;
+    private boolean isCorrect;
 
     // 사용자가 선택한 정답
-    private String userAnswer = null; //초기화
+    private String userAnswer;
 
-    public UserQuiz createUserQuiz(User user, Quiz quiz) {
-        UserQuiz userQuiz = UserQuiz.builder()
-                .user(user) //user에 맞춰서 코딩했으나..
-                .quiz(quiz)
-                .isSolved(isSolved)
-                .isCorrect(isCorrect)
-                .userAnswer(userAnswer)
-                .build();
-        return userQuiz;
-    }
 
 }
