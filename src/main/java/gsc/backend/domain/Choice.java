@@ -15,7 +15,7 @@ public class Choice extends BaseEntity {
     @Column(name = "choice_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 

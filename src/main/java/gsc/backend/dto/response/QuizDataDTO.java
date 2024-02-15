@@ -12,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuizDataDTO {
-    private Long id;
     private String description;
     private int answer;
     private List<QuizOptionsDTO> options;
