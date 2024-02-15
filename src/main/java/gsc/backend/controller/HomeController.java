@@ -1,8 +1,8 @@
 package gsc.backend.controller;
 
-import gsc.backend.dto.response.HomeEducationDataDTO;
-import gsc.backend.dto.response.HomeResponseDTO;
-import gsc.backend.dto.response.HomeMetaDTO;
+import gsc.backend.dto.response.home.HomeEducationDataDTO;
+import gsc.backend.dto.response.home.HomeResponseDTO;
+import gsc.backend.dto.response.home.HomeMetaDTO;
 import gsc.backend.service.HomeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -58,4 +58,8 @@ public class HomeController {
          return ResponseEntity.ok(Collections.singletonList(homeResponseDTO));
     }
 
+    @GetMapping("/education/{educationId}")
+    public ResponseEntity<> getEducation() {
+
+    }
 }

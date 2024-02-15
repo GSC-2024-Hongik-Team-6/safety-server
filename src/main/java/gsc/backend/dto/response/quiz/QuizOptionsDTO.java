@@ -1,19 +1,16 @@
-package gsc.backend.dto.response;
+package gsc.backend.dto.response.quiz;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuizDataDTO {
-    private Long id;
+public class QuizOptionsDTO {
+    private int id;
     private String description;
-    private int answer;
-    private List<QuizOptionsDTO> options;
+    private String imageUrl;
 }

@@ -5,7 +5,7 @@ import gsc.backend.domain.Quiz;
 import gsc.backend.domain.User;
 import gsc.backend.domain.mapping.UserEducation;
 import gsc.backend.domain.mapping.UserQuiz;
-import gsc.backend.dto.response.HomeEducationDataDTO;
+import gsc.backend.dto.response.home.HomeEducationDataDTO;
 import gsc.backend.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package gsc.backend.controller;
 
 import gsc.backend.dto.request.QuizAnswerRequestDTO;
-import gsc.backend.dto.response.QuizResponseDTO;
+import gsc.backend.dto.response.quiz.QuizResponseDTO;
 import gsc.backend.service.QuizService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
