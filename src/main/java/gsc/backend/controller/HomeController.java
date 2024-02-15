@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@Tag(name = "홈", description = "홈 화면 관련 API")
+@Tag(name = "교육 유형", description = "교육 유형 관련 API")
 public class HomeController {
 
     /* jwt 토큰으로 현재 사용자 uuid 조회
