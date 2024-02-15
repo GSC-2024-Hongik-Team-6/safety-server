@@ -4,6 +4,8 @@ import gsc.backend.dto.response.HomeEducationDataDTO;
 import gsc.backend.dto.response.HomeResponseDTO;
 import gsc.backend.dto.response.HomeMetaDTO;
 import gsc.backend.service.HomeService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "교육 유형", description = "교육 유형 관련 API")
 public class HomeController {
 
     /* jwt 토큰으로 현재 사용자 uuid 조회
@@ -36,6 +39,7 @@ public class HomeController {
     private final HomeService homeService;
 
     @GetMapping("/education")
+    @Operation(summary = "메인 홈 API", description = "모든 교육 유형을 조회하는 API 입니다")
     public ResponseEntity<List<HomeResponseDTO>> getHome(Principal principal) {
 
         // 사용자 uuid 조회

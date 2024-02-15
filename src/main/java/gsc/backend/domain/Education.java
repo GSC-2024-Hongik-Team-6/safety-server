@@ -22,6 +22,9 @@ public class Education extends BaseEntity {
     @OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
     private List<UserEducation> userEducationList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
+    private List<EducationImage> educationImageList = new ArrayList<>();
+
     // 교육 유형 이름
     private String name;
 
@@ -32,7 +35,7 @@ public class Education extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String detail;
 
-    // 대표 사진
+    // 썸네일 사진
     @Column(columnDefinition = "TEXT")
     private String image;
 

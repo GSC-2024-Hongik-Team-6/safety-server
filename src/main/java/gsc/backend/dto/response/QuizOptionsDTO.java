@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuizOptionsDTO {
-    private int id;
+    private int number;
     private String description;
     private String imageUrl;
 }
