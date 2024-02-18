@@ -72,11 +72,8 @@ public class QuizService {
         // 사용자 - 퀴즈 정보
         UserQuiz userQuiz = userQuizRepository.findByUserAndQuiz(user, quiz);
 
-        // 퀴즈 정답
-        QuizAnswer quizAnswer = quizAnswerRepository.findByQuiz_Id(quizId);
-
-        // 퀴즈 정답 판별
-        if (request.getUserAnswer() == (long) quizAnswer.getAnswer()) {
+        // 사용자의 퀴즈 정답 여부 저장
+        if (request.getIsCorrect()) {
             userQuiz.updateIsSolved();
             userQuiz.updateIsCorrect(true);
         } else {
