@@ -15,5 +15,5 @@ public class EducationQuizDTO {
     private Long id;
 
     // Quiz 해결 여부
-    private Boolean isSolved;
+    private int isSolved;
 }

@@ -25,6 +25,9 @@ public class Education extends BaseEntity {
     @OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
     private List<EducationImage> educationImageList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
+    private List<Quiz> quizList = new ArrayList<>();
+
     // 교육 유형 이름
     private String name;
 

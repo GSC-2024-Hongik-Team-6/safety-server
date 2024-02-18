@@ -1,7 +1,6 @@
 package gsc.backend.domain;
 
 import gsc.backend.domain.common.BaseEntity;
-import gsc.backend.domain.enums.EducationType;
 import gsc.backend.domain.enums.QuizType;
 import gsc.backend.domain.mapping.UserQuiz;
 import jakarta.persistence.*;
@@ -21,6 +20,10 @@ public class Quiz extends BaseEntity {
     @Column(name = "quiz_id")
     private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "education_id")
+    private Education education;
+
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
     private List<UserQuiz> userQuizList = new ArrayList<>();
 
@@ -36,9 +39,4 @@ public class Quiz extends BaseEntity {
     // 퀴즈 유형
     @Enumerated(EnumType.STRING)
     private QuizType quizType;
-
-    // 교육 유형
-    @Enumerated(EnumType.STRING)
-    private EducationType educationType;
-
 }

@@ -1,5 +1,6 @@
 package gsc.backend.dto.response.education;
 
+import gsc.backend.domain.EducationImage;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,7 +30,7 @@ public class EducationResponseDTO {
     private String detail;
 
     // Education imagesUrl List
-    private List<EducationImage> images;
+    private List<String> images;
 
     // Education Quizzes Info List
     private List<EducationQuizDTO> quizzes;
