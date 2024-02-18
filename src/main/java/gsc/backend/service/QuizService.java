@@ -1,9 +1,7 @@
 package gsc.backend.service;
 
-import gsc.backend.domain.Choice;
-import gsc.backend.domain.Quiz;
-import gsc.backend.domain.QuizAnswer;
-import gsc.backend.domain.User;
+import gsc.backend.domain.*;
+import gsc.backend.domain.mapping.UserEducation;
 import gsc.backend.domain.mapping.UserQuiz;
 import gsc.backend.dto.request.QuizAnswerRequestDTO;
 import gsc.backend.dto.response.quiz.QuizDataDTO;
@@ -26,6 +24,8 @@ public class QuizService {
     private final QuizAnswerRepository quizAnswerRepository;
     private final UserQuizRepository userQuizRepository;
     private final ChoiceRepository choiceRepository;
+    private final UserEducationRepository userEducationRepository;
+    private final EducationRepository educationRepository;
 
     public QuizResponseDTO getQuiz(Long quizId) {
 
@@ -72,8 +72,14 @@ public class QuizService {
         // 사용자 - 퀴즈 정보
         UserQuiz userQuiz = userQuizRepository.findByUserAndQuiz(user, quiz);
 
-        // 사용자의 퀴즈 정답 여부 저장
+        // 사용자의 퀴즈 정답 여부 저장 & userSolvedQuizCount 업데이트
         if (request.getIsCorrect()) {
+            Education education = educationRepository.findById(quiz.getEducation().getId()).orElseThrow(RuntimeException::new);
+            UserEducation userEducation = userEducationRepository.findByUserAndEducation(user, education);
+            if (!userQuiz.isSolved()) {
+                userEducation.updateQuizCount();
+            }
+
             userQuiz.updateIsSolved();
             userQuiz.updateIsCorrect(true);
         } else {
