@@ -36,4 +36,6 @@ public class UserEducation extends BaseEntity {
                 .build();
         return userEducation;
     }
+
+    public void updateQuizCount() { this.userSolvedQuizCount++; }
 }
