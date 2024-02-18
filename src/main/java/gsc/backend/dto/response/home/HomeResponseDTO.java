@@ -1,4 +1,4 @@
-package gsc.backend.dto.response;
+package gsc.backend.dto.response.home;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

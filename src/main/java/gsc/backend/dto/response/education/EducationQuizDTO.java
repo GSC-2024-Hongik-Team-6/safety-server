@@ -1,4 +1,4 @@
-package gsc.backend.dto.response;
+package gsc.backend.dto.response.education;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuizOptionsDTO {
-    private int number;
-    private String description;
-    private String imageUrl;
+public class EducationQuizDTO {
+
+    // Quiz id
+    private Long id;
+
+    // Quiz 해결 여부
+    private int isSolved;
 }

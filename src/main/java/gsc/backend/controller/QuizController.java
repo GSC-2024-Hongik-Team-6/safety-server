@@ -1,7 +1,7 @@
 package gsc.backend.controller;
 
 import gsc.backend.dto.request.QuizAnswerRequestDTO;
-import gsc.backend.dto.response.QuizResponseDTO;
+import gsc.backend.dto.response.quiz.QuizResponseDTO;
 import gsc.backend.service.QuizService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

@@ -1,4 +1,4 @@
-package gsc.backend.dto.response;
+package gsc.backend.dto.response.quiz;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class HomeMetaDTO {
-    private int count;
+public class QuizOptionsDTO {
+    private int number;
+    private String description;
+    private String imageUrl;
 }

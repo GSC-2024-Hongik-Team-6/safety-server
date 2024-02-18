@@ -1,4 +1,4 @@
-package gsc.backend.dto.response;
+package gsc.backend.dto.response.quiz;
 
 import gsc.backend.domain.enums.QuizType;
 import lombok.AllArgsConstructor;
