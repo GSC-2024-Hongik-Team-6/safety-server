@@ -22,7 +22,6 @@ import java.util.List;
 public class QuizService {
 
     private final UserRepository userRepository;
-    private final EducationRepository educationRepository;
     private final QuizRepository quizRepository;
     private final QuizAnswerRepository quizAnswerRepository;
     private final UserQuizRepository userQuizRepository;
@@ -40,14 +39,13 @@ public class QuizService {
         List<Choice> choiceList = choiceRepository.findAllByQuiz_Id(quiz.getId());
         List<QuizOptionsDTO> optionsDTO = choiceList.stream()
                 .map(m -> QuizOptionsDTO.builder()
-                        .id(m.getChoiceNumber())
+                        .number(m.getChoiceNumber())
                         .description(m.getDescription())
                         .imageUrl(m.getImageUrl())
                         .build())
                 .toList();
 
         QuizDataDTO quizDataDTO = QuizDataDTO.builder()
-                .id(quiz.getId())
                 .description(quiz.getQuestion())
                 .answer(quizAnswer.getAnswer())
                 .options(optionsDTO)
@@ -57,7 +55,7 @@ public class QuizService {
         QuizResponseDTO quizResponseDTO = QuizResponseDTO.builder()
                 .id(quizId)
                 .type(quiz.getQuizType())
-                .item(quizDataDTO)
+                .data(quizDataDTO)
                 .build();
 
         return quizResponseDTO;

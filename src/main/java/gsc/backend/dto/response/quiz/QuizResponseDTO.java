@@ -18,5 +18,5 @@ public class QuizResponseDTO {
     private QuizType type;
 
     // Quiz 선지 리스트
-    private QuizDataDTO item;
+    private QuizDataDTO data;
 }
