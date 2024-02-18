@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.util.Collections;
@@ -31,7 +32,7 @@ public class QuizEnteringController {
 
     @GetMapping("/quizzes")
 
-    public ResponseEntity<List<QuizEnteringDTO>> getQuizEntering(@Param("educationId") Long educationId, Principal principal) {
+    public ResponseEntity<List<QuizEnteringDTO>> getQuizEntering(@RequestParam("educationId") Long educationId, Principal principal) {
 
         // 사용자 uuid 조회
         String userUuid = principal.getName();
