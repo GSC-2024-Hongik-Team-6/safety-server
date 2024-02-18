@@ -14,6 +14,9 @@ public class QuizResponseDTO {
     // Quiz Id
     private Long id;
 
+    // Quiz 정답 여부
+    private int answerStatus;
+
     // Quiz Type
     private QuizType type;
 

@@ -21,10 +21,13 @@ public class QuizController {
 
     @GetMapping("/quiz/{quizId}")
     @Operation(summary = "퀴즈 조회 API", description = "퀴즈 ID 에 해당하는 퀴즈가 반환되는 API 입니다")
-    public ResponseEntity<QuizResponseDTO> getMulti(@PathVariable("quizId") Long quizId) {
+    public ResponseEntity<QuizResponseDTO> getMulti(Principal principal,
+                                                    @PathVariable("quizId") Long quizId) {
+        // 사용자
+        String userUuid = principal.getName();
 
         // Quiz 데이터 조회
-        QuizResponseDTO quizResponseDTO = quizService.getQuiz(quizId);
+        QuizResponseDTO quizResponseDTO = quizService.getQuiz(userUuid, quizId);
 
         return ResponseEntity.ok(quizResponseDTO);
     }

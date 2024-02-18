@@ -27,7 +27,7 @@ public class QuizService {
     private final UserQuizRepository userQuizRepository;
     private final ChoiceRepository choiceRepository;
 
-    public QuizResponseDTO getQuiz(Long quizId) {
+    public QuizResponseDTO getQuiz(String userUuid, Long quizId) {
 
         // 퀴즈
         Quiz quiz = quizRepository.findById(quizId).orElseThrow(RuntimeException::new);
@@ -51,9 +51,22 @@ public class QuizService {
                 .options(optionsDTO)
                 .build();
 
+        // answerStatus 세팅
+        User user = userRepository.findByUuid(userUuid);
+        UserQuiz userQuiz = userQuizRepository.findByUserAndQuiz(user, quiz);
+        int answerStatus;
+        if (!userQuiz.isSolved()) {
+            answerStatus = 0;
+        } else if (!userQuiz.isCorrect()) {
+            answerStatus = 2;
+        } else {
+            answerStatus = 1;
+        }
+
         // 반환값 세팅
         QuizResponseDTO quizResponseDTO = QuizResponseDTO.builder()
                 .id(quizId)
+                .answerStatus(answerStatus)
                 .type(quiz.getQuizType())
                 .data(quizDataDTO)
                 .build();
