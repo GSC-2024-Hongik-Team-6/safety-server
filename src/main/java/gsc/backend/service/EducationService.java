@@ -69,12 +69,12 @@ public class EducationService {
                             .collect(Collectors.toList());
 
                     return HomeEducationDataDTO.builder()
-                            .educationId(m.getId())
-                            .educationName(m.getName())
-                            .educationDescription(m.getDescription())
-                            .educationDetail(m.getDetail())
-                            .images(images) // detail 정보에 들어가는 images
+                            .id(m.getId())
+                            .title(m.getName())
+                            .description(m.getDescription())
                             .thumbUrl(m.getImage()) // thumbUrl
+                            .detail(m.getDetail())
+                            .images(images) // detail 정보에 들어가는 images
                             .solvedQuizCount(userEducation.getUserSolvedQuizCount())
                             .totalQuizCount(m.getTotalQuizCount())
                             .build();
