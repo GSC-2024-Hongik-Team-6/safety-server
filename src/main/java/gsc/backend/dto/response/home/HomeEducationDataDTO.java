@@ -18,6 +18,5 @@ public class HomeEducationDataDTO {
     private String educationDetail;
     private List<String> images;
     private String thumbUrl;
-    private int solvedQuizCount;
     private int totalQuizCount;
 }
