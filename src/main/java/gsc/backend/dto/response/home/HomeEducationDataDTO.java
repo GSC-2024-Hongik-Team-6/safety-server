@@ -12,12 +12,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HomeEducationDataDTO {
-    private Long educationId;
-    private String educationName;
-    private String educationDescription;
-    private String educationDetail;
-    private List<String> images;
+    private Long id;
+    private String title;
+    private String description;
     private String thumbUrl;
+    private String detail;
+    private List<String> images;
     private int solvedQuizCount;
     private int totalQuizCount;
 }
