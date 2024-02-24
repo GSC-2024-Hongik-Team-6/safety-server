@@ -63,11 +63,18 @@ public class EducationService {
 
                     UserEducation userEducation = userEducationRepository.findByUserAndEducation(nowUser, m);
 
+                    List<String> images =  educationImageRepository.findAllByEducation_Id(m.getId())
+                            .stream()
+                            .map(EducationImage::getEducationImageUrl)
+                            .collect(Collectors.toList());
+
                     return HomeEducationDataDTO.builder()
                             .educationId(m.getId())
                             .educationName(m.getName())
                             .educationDescription(m.getDescription())
                             .educationDetail(m.getDetail())
+                            .images(images) // detail 정보에 들어가는 images
+                            .thumbUrl(m.getImage()) // thumbUrl
                             .solvedQuizCount(userEducation.getUserSolvedQuizCount())
                             .totalQuizCount(m.getTotalQuizCount())
                             .build();

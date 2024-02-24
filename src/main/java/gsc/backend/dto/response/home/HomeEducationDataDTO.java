@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Builder
 @Getter
 @NoArgsConstructor
@@ -14,6 +16,8 @@ public class HomeEducationDataDTO {
     private String educationName;
     private String educationDescription;
     private String educationDetail;
+    private List<String> images;
+    private String thumbUrl;
     private int solvedQuizCount;
     private int totalQuizCount;
 }
