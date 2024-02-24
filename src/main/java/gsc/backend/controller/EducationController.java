@@ -48,7 +48,7 @@ public class EducationController {
         String userUuid = principal.getName();
 
         // Education 데이터 조회
-        List<HomeEducationDataDTO> educationDto = educationService.getHomeData();
+        List<HomeEducationDataDTO> educationDto = educationService.getHomeData(userUuid);
 
         // Meta 세팅
         HomeMetaDTO homeMetaDTO = HomeMetaDTO.builder()
