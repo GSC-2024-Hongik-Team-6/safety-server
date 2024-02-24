@@ -42,7 +42,7 @@ public class EducationController {
 
     @GetMapping("/education")
     @Operation(summary = "Education API", description = "모든 교육 유형을 조회하는 API 입니다")
-    public ResponseEntity <HomeResponseDTO> getEducation(Principal principal) {
+    public ResponseEntity<HomeResponseDTO> getEducation(Principal principal) {
 
         // 사용자 uuid 조회
         String userUuid = principal.getName();
@@ -61,7 +61,7 @@ public class EducationController {
                 .data(educationDto)
                 .build();
 
-         return ResponseEntity.ok((HomeResponseDTO) Collections.singletonList(homeResponseDTO));
+         return ResponseEntity.ok(homeResponseDTO);
     }
 
     @GetMapping("/education/{educationId}")
