@@ -45,7 +45,7 @@ public class EducationController {
     public ResponseEntity <HomeResponseDTO> getEducation(Principal principal) {
 
         // 사용자 uuid 조회
-        principal.getName();
+        String userUuid = principal.getName();
 
         // Education 데이터 조회
         List<HomeEducationDataDTO> educationDto = educationService.getHomeData();
