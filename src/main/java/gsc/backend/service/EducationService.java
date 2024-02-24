@@ -64,7 +64,7 @@ public class EducationService {
                     UserEducation userEducation = userEducationRepository.findByUserAndEducation(nowUser, m);
 
                     List<String> images =  m.getEducationImageList().stream().map(
-                            image -> { return image.getEducationImageUrl(); } ).collect(Collectors.toList());
+                            EducationImage::getEducationImageUrl).collect(Collectors.toList());
 
                     return HomeEducationDataDTO.builder()
                             .educationId(m.getId())
