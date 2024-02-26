@@ -15,7 +15,7 @@ GDSC Solution Challenge Server Repository
 ## 🖹DB setting
 #### Local MySQL ~ Google Cloud MySQL integration
 Set Local MySQL </br>
-Set application.yml file in Springboot
+Set application.yml file in Springboot</br>
 Network authorization in security through Google Cloud MySQL
 ```
 spring:
@@ -33,6 +33,15 @@ spring:
         hbm2ddl:
           auto: update
         default_batch_fetch_size: 1000
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://www.googleapis.com/service_accounts/v1/jwk/securetoken%40system.gserviceaccount.com
+          issuer-uri: https://securetoken.google.com/${FIREBASE_APP_NAME}
+
+logging.level:
+  org.hibernate.SQL: debug
 ```
 * ```${DB_URL}``` should be Public IP address of Google Cloud MySQL
 * ```${DB_USERNAME}``` should be Local MySQL's userName
