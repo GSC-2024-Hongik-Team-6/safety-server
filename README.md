@@ -12,6 +12,9 @@ GDSC Solution Challenge Server Repository
 <img src=https://github.com/GSC-2024-Hongik-Team-6/safety-server/assets/106096303/9c3b8df5-6611-4ecd-8f55-2838f01d53e0 width="120" height="60"/>
 </br>
 
+## 🧩ERD
+![Google Solution Challenge ERD](https://github.com/GSC-2024-Hongik-Team-6/safety-server/assets/90559205/0c63c565-e550-478e-88f2-f1d9262f6c22)
+
 ## 🖹DB setting
 #### Local MySQL ~ Google Cloud MySQL integration
 Set Local MySQL </br>
